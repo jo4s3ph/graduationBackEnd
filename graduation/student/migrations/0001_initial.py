@@ -10,53 +10,50 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
+        ('faculty_menber', '0001_initial'),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='SystemAdminProfile',
+            name='StudentProfile',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('first_name', models.CharField(blank=True, max_length=100, null=True)),
                 ('last_name', models.CharField(blank=True, max_length=100, null=True)),
                 ('birth_date', models.DateField(blank=True, null=True)),
                 ('gender', models.CharField(blank=True, choices=[('M', 'Male'), ('F', 'Female')], default='M', max_length=1, null=True)),
+                ('level', models.PositiveIntegerField(default=1)),
+                ('gpa', models.FloatField(blank=True, max_length=3)),
+                ('earned_points', models.PositiveIntegerField(blank=True, null=True)),
                 ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
             options={
-                'db_table': 'system_admin_profile',
+                'db_table': 'student_profile',
             },
         ),
         migrations.CreateModel(
-            name='Event',
+            name='StudentProfermenceEvent',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('event_name', models.CharField(blank=True, max_length=100)),
-                ('faculty_name', models.CharField(blank=True, max_length=100)),
-                ('description', models.TextField(blank=True, max_length=2000, null=True)),
-                ('date_created', models.DateField(auto_now_add=True)),
-                ('date_ubdated', models.DateField(auto_now=True, null=True)),
-                ('date_start', models.DateTimeField(auto_now=True)),
-                ('date_end', models.DateTimeField(blank=True)),
-                ('admin_profile', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='system_admin.systemadminprofile')),
+                ('grade', models.PositiveIntegerField()),
+                ('challenge_area_id', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='faculty_menber.challengeevent')),
+                ('student_profile_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='student.studentprofile')),
             ],
             options={
-                'db_table': 'event',
+                'db_table': 'student_profermence_event',
             },
         ),
         migrations.CreateModel(
-            name='Area',
+            name='StudentProfermenceArea',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('area_name', models.CharField(blank=True, max_length=100)),
-                ('description', models.TextField(blank=True, max_length=2000, null=True)),
-                ('date_created', models.DateField(auto_now_add=True)),
-                ('date_ubdated', models.DateField(auto_now=True, null=True)),
-                ('admin_profile', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='system_admin.systemadminprofile')),
+                ('grade', models.PositiveIntegerField()),
+                ('challenge_area_id', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='faculty_menber.challengearea')),
+                ('student_profile_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='student.studentprofile')),
             ],
             options={
-                'db_table': 'area',
+                'db_table': 'student_profermence_area',
             },
         ),
     ]

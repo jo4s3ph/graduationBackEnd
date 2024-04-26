@@ -37,7 +37,7 @@ class StudentProfermenceArea(models.Model):
 
 class StudentProfermenceEvent(models.Model):
     student_profile_id = models.ForeignKey(to=StudentProfile, on_delete=models.CASCADE)
-    challenge_area_id = models.ForeignKey(to=ChallengeEvent, on_delete=models.PROTECT)
+    challenge_event_id = models.ForeignKey(to=ChallengeEvent, on_delete=models.PROTECT)
     grade = models.PositiveIntegerField(null=False)
 
     class Meta:

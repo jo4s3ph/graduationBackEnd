@@ -39,6 +39,7 @@ class TopicArea(models.Model):
 
 
 class ParagraphArea(models.Model):
+    faculty_profile_id = models.ForeignKey(to=FacultyMemberProfile, on_delete=models.CASCADE)
     topic_area_id = models.ForeignKey(to=TopicArea, on_delete=models.CASCADE)
     paragraph_title = models.CharField(max_length=100, null=False, blank=True)
     content = models.TextField(max_length=4000, null=False,)

@@ -35,7 +35,7 @@ INSTALLED_APPS = [
     "drf_yasg",
     "authentication",
     "system_admin",
-    "faculty_menber",
+    "faculty_member",
     "student"
 ]
 

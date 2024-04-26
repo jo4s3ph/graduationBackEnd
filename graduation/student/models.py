@@ -1,6 +1,6 @@
 from django.db import models
 from django.conf import settings
-from faculty_menber.models import ChallengeArea, ChallengeEvent
+from faculty_member.models import ChallengeArea, ChallengeEvent
 
 
 

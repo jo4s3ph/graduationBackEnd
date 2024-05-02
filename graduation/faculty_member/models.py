@@ -1,6 +1,6 @@
 from django.db import models
 from django.conf import settings
-from system_admin.models import Area, Event
+from system_admin.models import Area, Event, FacultyDepartment
 
 
 class FacultyMemberProfile(models.Model):
@@ -13,6 +13,7 @@ class FacultyMemberProfile(models.Model):
     ]
 
     user = models.OneToOneField(to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    faculty_department = models.ForeignKey(to=FacultyDepartment, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=100, null=True, blank=True)
     last_name = models.CharField(max_length=100, null=True, blank=True)
     birth_date = models.DateField(null=True, blank=True)

@@ -1,30 +1,13 @@
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import permissions
 from rest_framework.viewsets import ModelViewSet
-from faculty_member.models import FacultyMemberProfile
-from faculty_member.serializer import FacultyMemberProfileSerializer
 
-from faculty_member.models import TopicArea
-from faculty_member.serializer import TopicAreaSerializer
-from faculty_member.models import ParagraphArea
-from faculty_member.serializer import ParagraphAreaSerializer
-from faculty_member.models import ChallengeArea
-from faculty_member.serializer import ChallengeAreaSerializer
-from faculty_member.models import QuestionArea
-from faculty_member.serializer import QuestionAreaSerializer
-from faculty_member.models import OptionsArea
-from faculty_member.serializer import OptionsAreaSerializer
+from faculty_member.models import ChallengeArea, FacultyMemberProfile, OptionsArea, ParagraphArea, QuestionArea, TopicArea
+from faculty_member.serializer import ChallengeAreaSerializer, FacultyMemberProfileSerializer, OptionsAreaSerializer, ParagraphAreaSerializer, QuestionAreaSerializer, TopicAreaSerializer
 
-from faculty_member.models import TopicEvent
-from faculty_member.serializer import TopicEventSerializer
-from faculty_member.models import ParagraphEvent
-from faculty_member.serializer import ParagraphEventSerializer
-from faculty_member.models import ChallengeEvent
-from faculty_member.serializer import ChallengeEventSerializer
-from faculty_member.models import QuestionEvent
-from faculty_member.serializer import QuestionEventSerializer
-from faculty_member.models import OptionsEvent
-from faculty_member.serializer import OptionsEventSerializer
+
+from faculty_member.models import ChallengeEvent, OptionsEvent, ParagraphEvent, QuestionEvent, TopicEvent
+from faculty_member.serializer import ChallengeEventSerializer, OptionsEventSerializer, ParagraphEventSerializer, QuestionEventSerializer, TopicEventSerializer
 
 
 

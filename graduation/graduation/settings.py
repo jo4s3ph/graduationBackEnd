@@ -1,4 +1,5 @@
 import datetime
+from nt import environ
 import os
 from pathlib import Path
 
@@ -15,7 +16,17 @@ SECRET_KEY = 'django-insecure-fy2bng=4!ps2*!m&d_uxc#p$(fa_u_u8rmpv^ftmq-v&re+_fi
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# env = environ.Env(
+#     # set casting, default value
+#     DEBUG=(bool, False)
+# )
+
+# Take environment variables from .env file
+# environ.Env.read_env(BASE_DIR / '.env')
+
+# SECRET_KEY = env('SECRET_KEY')
+
+ALLOWED_HOSTS = ['*', '192.168.100.7']
 
 
 # Application definition
@@ -75,7 +86,8 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://read-and-write.example.com",
+    # "https://read-and-write.example.com",
+    "http://localhost:8000"
 ]
 
 CORS_ALLOWED_ORIGIN_REGEXES = [
@@ -194,3 +206,8 @@ AUTH_USER_MODEL = 'authentication.User'
 # # DEFAULT_FROM_EMAIL=''
 # EMAIL_PORT = 465
 # EMAIL_USE_TLS = True
+
+EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
+EMAIL_HOST_USER = '25497893e0cf19'
+EMAIL_HOST_PASSWORD = 'aecc8ec688f925'
+EMAIL_PORT = '2525'

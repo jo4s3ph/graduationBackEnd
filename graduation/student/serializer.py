@@ -1,16 +1,24 @@
 from rest_framework import serializers
 from .models import StudentProfile
-from .models import StudentProfermenceArea
-from .models import StudentProfermenceEvent
+from .models import StudentPerformanceArea
+from .models import StudentPerformanceEvent
+from authentication.models import User
 
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name']
 
 class StudentProfileSerializer(serializers.ModelSerializer):
+    user = UserSerializer()
     class Meta:
         model = StudentProfile
         fields = [
             'id',
-            'first_name',
-            'last_name',
+            'user',
+            'faculty_department',
             'birth_date',
             'gender',
             'level',
@@ -20,25 +28,24 @@ class StudentProfileSerializer(serializers.ModelSerializer):
 
 
 
-class StudentProfermenceAreaSerializer(serializers.ModelSerializer):
+class StudentPerformanceAreaSerializer(serializers.ModelSerializer):
     class Meta:
-        model = StudentProfermenceArea
+        model = StudentPerformanceArea
         fields = [
             'id',
             'student_profile_id',
             'challenge_area_id',
-            'grade'
+            'grade',
+            'is_completed'
         ]
 
-
-
-
-class StudentProfermenceEventSerializer(serializers.ModelSerializer):
+class StudentPerformanceEventSerializer(serializers.ModelSerializer):
     class Meta:
-        model = StudentProfermenceEvent
+        model = StudentPerformanceEvent
         fields = [
             'id',
             'student_profile_id',
             'challenge_event_id',
-            'grade'
+            'grade',
+            'is_completed'
         ]

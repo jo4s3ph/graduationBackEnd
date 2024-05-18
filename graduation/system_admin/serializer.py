@@ -1,19 +1,14 @@
 from rest_framework import serializers
 from .models import SystemAdminProfile, FacultyDepartment, Area, Event
 
-
 class SystemAdminProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = SystemAdminProfile
         fields = [
             'id',
-            'first_name',
-            'last_name',
             'birth_date',
             'gender'
         ]
-
-
 
 class FacultyDepartmentSerializer(serializers.ModelSerializer):
     class Meta:
@@ -26,12 +21,8 @@ class FacultyDepartmentSerializer(serializers.ModelSerializer):
             'description',
             'is_active',
             'date_created',
-            'date_ubdated'
+            'date_updated'
         ]
-
-
-
-
 
 class AreaSerializer(serializers.ModelSerializer):
     class Meta:
@@ -39,14 +30,13 @@ class AreaSerializer(serializers.ModelSerializer):
         fields = [
             'id',
             'admin_profile',
+            'faculty_department',
             'area_name',
             'description',
             'is_active',
             'date_created',
-            'date_ubdated'
+            'date_updated'
         ]
-
-
 
 class EventSerializer(serializers.ModelSerializer):
     class Meta:
@@ -54,11 +44,12 @@ class EventSerializer(serializers.ModelSerializer):
         fields = [
             'id',
             'admin_profile',
+            'faculty_department',
             'event_name',
             'description',
             'is_active',
             'date_created',
-            'date_ubdated',
+            'date_updated',
             'date_start',
             'date_end'
         ]
